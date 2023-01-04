@@ -31,7 +31,7 @@ app.listen(
     }
 )
 
-// Buat crud with sql raw native table department
+// CRUD with sql raw native
 app.get(
     "/departments",
     (request, response) => {
