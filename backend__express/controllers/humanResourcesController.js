@@ -60,11 +60,14 @@ const deleteDepartment = async(request, response) => {
             }
         }
     ).then(
-        result => `Department with ID ${request.params.id} has been deleted`
+        result => {
+            return response.send(`Department with ID ${request.params.id} has been deleted`)
+        }
     ).catch(
-        result => `Request failed.`
+        result => {
+            return response.send(`Request failed.`)
+        }
     )
-    // return response.send(`Department with ID ${request.params.id} has been deleted`)
 }
 
 const jobHistoryPerDepartment = async(request, response) => {
