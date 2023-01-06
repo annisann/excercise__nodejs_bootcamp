@@ -4,7 +4,8 @@ import models, {sequelize} from "../models/init-models"
 const findAllDepartment = async(request, response) => {
     const result = await sequelize.query(
         // "SELECT * FROM hr.d",
-        "SELECT DepartmentID, Name, GroupName FROM humanresources.department",
+        // "SELECT DepartmentID, Name, GroupName FROM hr.d",
+        "select * from pe.p join pe.e using(businessentityid) join pe.pa using(businessentityid)",
         {
             type: sequelize.QueryTypes.SELECT,
             model: request.context.models.department, // models.department

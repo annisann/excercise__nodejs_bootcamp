@@ -85,7 +85,7 @@ var _vendor = require("./vendor");
 var _workorder = require("./workorder");
 var _workorderrouting = require("./workorderrouting");
 
-const initModels = (sequelize) => {
+function initModels(sequelize) {
   var address = _address(sequelize, DataTypes);
   var addresstype = _addresstype(sequelize, DataTypes);
   var billofmaterials = _billofmaterials(sequelize, DataTypes);
