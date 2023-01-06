@@ -30,12 +30,6 @@ sequelize.sync({
         }
     }
 )
-// app.use(
-//     '/eshopay/',
-//     (request, response) => {
-//         response.send('Hellooooooooo')
-//     }
-// )
 
 app.listen(
     PORT,
