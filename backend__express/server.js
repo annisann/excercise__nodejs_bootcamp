@@ -1,11 +1,13 @@
 import "dotenv/config"
 import express from "express"
 import models, {sequelize} from "./models/init-models"
-import router from "./routes/indexRoutes"
+import routes from "./routes/indexRoutes"
 
 const PORT = process.env.port || 4141
 
 const app = express()
+
+// request bisa dibaca
 app.use(express.json())
 app.use(express.urlencoded(
     {
@@ -19,13 +21,15 @@ app.use(
     }
 )
 
+app.use(routes)
+
+// for database do not drop everytime server connects
 const dropDatabaseSync = false
-// biar ga didrop setelah jalanin
 sequelize.sync({
     force:dropDatabaseSync
 }).then(
     () => {
-        if(dropDatabaseSync) {
+        if(!dropDatabaseSync) {
             console.log("Database do not drop")
         }
     }
@@ -37,5 +41,3 @@ app.listen(
         console.log(`Server listens on port ${PORT}`)
     }
 )
-
-app.use(router)
