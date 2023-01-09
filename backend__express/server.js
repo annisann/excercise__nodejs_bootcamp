@@ -11,9 +11,10 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded(
     {
-        extended: true
+        extended: true // all datatype is accepted, else: only array & string
     }
 ))
+
 app.use(
     (request, response, next) => {
         request.context = {models}
@@ -23,7 +24,7 @@ app.use(
 
 app.use(routes)
 
-// for database do not drop everytime server connects
+// check connection to database & for database do not drop everytime server connects
 const dropDatabaseSync = false
 sequelize.sync({
     force:dropDatabaseSync
