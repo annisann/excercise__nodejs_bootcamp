@@ -9,17 +9,17 @@ const logIn = async(request, response) => {
     await personController.findUserByEmail(
         (userResult) => {
             const userData = userResult[0]
+            
             /** userResult:
              *      index 0: data     []
              *      index 1: metadata {}
              */
-        
+            
             //  check if user is in database
             if (userData) {
                 // check if password match
                 const passwordMatch = bcrypt.compareSync(input.password, userData.passwordhash)
                 if (passwordMatch) {
-                    // delete userResult.password
                     
                     let token = jwt.sign(userData, process.env.SECRET_KEY, { // add jwt secretkey in .env
                         expiresIn: '5m' // for token to expire
@@ -45,7 +45,7 @@ const logIn = async(request, response) => {
 
 const checkToken = (request, response, next) => {
     if (!request.headers.authorization) {
-        response.status(403).send(`You are not authorized`)
+        return response.status(403).send(`You are not authorized`)
     } else {
         let token = request.headers.authorization
 

@@ -44,7 +44,7 @@ const updateDepartment = async(request, response) => {
             modifieddate: request.body.modifieddate
         },
         {
-            returning: true,
+            returning: true, // return updated data
             where: {
                 departmentid:request.params.id
             }

@@ -15,6 +15,7 @@ const findUserByEmail = async(callback, email) => {
         JOIN pe.e USING (BusinessEntityID)
         JOIN pe.pa USING (BusinessEntityID)
         WHERE emailaddress = :email
+        LIMIT 1
     `
     const result = await sequelize.query(
         sql,
@@ -42,53 +43,54 @@ const createUser = async(request, response) => {
 
     // Hashing
     const passwordHash = bcrypt.hashSync(password, passwordSalt)
-
-    const sql = `
-        CREATE OR REPLACE FUNCTION getNewBusinessEntityID ()
-        RETURNS int
-        AS $$
+    
+    const sql = `CALL SignUp(:firstname, :middlename, :lastname, :suffix, :email, :phone, :persontype, :passwordhash, :passwordsalt);`
+    // const sql = `
+    //     CREATE OR REPLACE FUNCTION getNewBusinessEntityID ()
+    //     RETURNS int
+    //     AS $$
         
-        BEGIN
-            RETURN (SELECT SETVAL('person."businessentity_businessentityid_seq"', 
-                                (SELECT MAX(BusinessEntityID) FROM Person.BusinessEntity) + 1
-                                )
-                );
-        END; $$
-        LANGUAGE plpgsql;
+    //     BEGIN
+    //         RETURN (SELECT SETVAL('person."businessentity_businessentityid_seq"', 
+    //                             (SELECT MAX(BusinessEntityID) FROM Person.BusinessEntity) + 1
+    //                             )
+    //             );
+    //     END; $$
+    //     LANGUAGE plpgsql;
 
-        CREATE OR REPLACE PROCEDURE SignUp(
-            FirstName 			text,
-            MiddleName 			text,
-            LastName			text,
-            Suffix				text,
-            Email				text,
-            PhoneNumber			text,
-            PersonType			text,
-            PasswordHash		text,
-            PasswordSalt        text
-        )
-        AS $$
+    //     CREATE OR REPLACE PROCEDURE SignUp(
+    //         FirstName 			text,
+    //         MiddleName 			text,
+    //         LastName			text,
+    //         Suffix				text,
+    //         Email				text,
+    //         PhoneNumber			text,
+    //         PersonType			text,
+    //         PasswordHash		text,
+    //         PasswordSalt        text
+    //     )
+    //     AS $$
         
-        DECLARE
-            BusinessEntityID int;
+    //     DECLARE
+    //         BusinessEntityID int;
         
-        BEGIN
-            BusinessEntityID := getNewBusinessEntityID();
-            INSERT INTO pe.be (BusinessEntityID)
-                VALUES (BusinessEntityID);
-            INSERT INTO pe.p (BusinessEntityID, FirstName, MiddleName, LastName, Suffix, PersonType) 
-                VALUES (BusinessEntityID, FirstName, MiddleName, LastName, Suffix, PersonType);
-            INSERT INTO pe.pp (BusinessEntityID, PhoneNumber, PhoneNumberTypeID)
-                VALUES (BusinessEntityID, PhoneNumber, 1);
-            INSERT INTO pe.e (BusinessEntityID, EmailAddress)
-                VALUES (BusinessEntityID, Email);
-            INSERT INTO pe.pa (BusinessEntityID, PasswordHash, PasswordSalt)
-                VALUES (BusinessEntityID, PasswordHash, PasswordSalt);
-        END; $$
-        LANGUAGE plpgsql;
+    //     BEGIN
+    //         BusinessEntityID := getNewBusinessEntityID();
+    //         INSERT INTO pe.be (BusinessEntityID)
+    //             VALUES (BusinessEntityID);
+    //         INSERT INTO pe.p (BusinessEntityID, FirstName, MiddleName, LastName, Suffix, PersonType) 
+    //             VALUES (BusinessEntityID, FirstName, MiddleName, LastName, Suffix, PersonType);
+    //         INSERT INTO pe.pp (BusinessEntityID, PhoneNumber, PhoneNumberTypeID)
+    //             VALUES (BusinessEntityID, PhoneNumber, 1);
+    //         INSERT INTO pe.e (BusinessEntityID, EmailAddress)
+    //             VALUES (BusinessEntityID, Email);
+    //         INSERT INTO pe.pa (BusinessEntityID, PasswordHash, PasswordSalt)
+    //             VALUES (BusinessEntityID, PasswordHash, PasswordSalt);
+    //     END; $$
+    //     LANGUAGE plpgsql;
 
-        CALL SignUp(:firstname, :middlename, :lastname, :suffix, :email, :phone, :persontype, :passwordhash, :passwordsalt);    
-    `
+    //     CALL SignUp(:firstname, :middlename, :lastname, :suffix, :email, :phone, :persontype, :passwordhash, :passwordsalt);    
+    // `
 
     await sequelize.query(
         sql,

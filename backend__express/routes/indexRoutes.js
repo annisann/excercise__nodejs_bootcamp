@@ -28,8 +28,7 @@ router.get('/history', humanResourcesController.jobHistoryPerDepartment)
 router.get('/person', personController.findAllUser)
 // Insert new user
 router.post('/person/add', personController.createUser)
-// // Find user by Email
-// router.get('/person/:email', personController.findUserByEmail)
-
+// Find user by Email
+// router.post('/person/:email', personController.findUserByEmail)
 
 export default router // yang paling utama dibaca, kalo {} optional
