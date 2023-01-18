@@ -11,6 +11,7 @@ import Addition from './components/calculator/addition';
 import Substraction from './components/calculator/substraction';
 import Multiplication from './components/calculator/multiplication';
 import Division from './components/calculator/division';
+import SendName from './components/parentChildComponent/sendNameData';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -42,13 +43,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 /** Calculator */
 root.render(
   <React.StrictMode>
-    <Addition/>
+    {/* <Addition/>
     <br/>
     <Substraction/>
     <br/>
     <Multiplication/>
     <br/>
-    <Division/>
+    <Division/> */}
+    <SendName/>
   </React.StrictMode>
 )
 
