@@ -74,3 +74,4 @@ backend__express/models/workorder.js
 backend__express/models/workorderrouting.js
 backend__http/public/images/image2.jpg
 backend__http/public/images/img.png
+frontend/public/NiceAdmin/assets/img/profpic.jpg
