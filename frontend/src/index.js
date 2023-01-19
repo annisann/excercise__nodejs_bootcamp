@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Calculator from './components/calculatorWithProps/calculatorInterface';
 import ParentEmployeeData from './components/employeeData/parentEmployeeData';
+import RoutesPath from './routing/routes';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,7 +18,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // Employee
 root.render(
   <React.StrictMode>
-    <ParentEmployeeData></ParentEmployeeData>
+    <RoutesPath></RoutesPath>
+    {/* <ParentEmployeeData></ParentEmployeeData> */}
   </React.StrictMode>
 )
 
