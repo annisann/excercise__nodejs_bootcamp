@@ -37,6 +37,20 @@ h6 {
   font-family: "Nunito", sans-serif;
 }
 
+table {
+  width: 80%;
+  margin: auto;
+}
+
+thead {
+  font-size: larger;
+  height: 60px;
+}
+
+td {
+  height: 50px;
+}
+
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/
@@ -76,6 +90,25 @@ h6 {
 
 #operation-container h2 {
   margin-top: 20px;
+}
+
+#table-employee {
+  position: relative;
+  font-family: monospace;
+}
+
+#table-employee::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/bfly-bloodmoonball.png);
+  background-repeat:no-repeat;
+  background-size: contain;
+  /* background-size: cover; */
+  opacity: 0.2;
 }
 
 @media (max-width: 1199px) {

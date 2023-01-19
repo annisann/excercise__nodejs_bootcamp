@@ -3,13 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Calculator from './components/calculatorWithProps/calculatorInterface';
+import ParentEmployeeData from './components/employeeData/parentEmployeeData';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 /** Calculator */
+// root.render(
+//   <React.StrictMode>
+//     <Calculator></Calculator>
+//   </React.StrictMode>
+// )
+
+// Employee
 root.render(
   <React.StrictMode>
-    <Calculator></Calculator>
+    <ParentEmployeeData></ParentEmployeeData>
   </React.StrictMode>
 )
 
