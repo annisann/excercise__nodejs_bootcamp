@@ -11,5 +11,6 @@ import { UserService } from 'src/user/user.service';
   imports: [TypeOrmModule.forFeature([Regions, Users])],
   controllers: [RegionsController, UserController],
   providers: [RegionsService, UserService],
+  exports: [UserService],
 })
 export class GlobalModule {}

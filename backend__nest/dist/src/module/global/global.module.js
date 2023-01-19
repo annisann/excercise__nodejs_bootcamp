@@ -22,6 +22,7 @@ GlobalModule = __decorate([
         imports: [typeorm_1.TypeOrmModule.forFeature([Regions_1.Regions, Users_1.Users])],
         controllers: [regions_controller_1.RegionsController, user_controller_1.UserController],
         providers: [regions_service_1.RegionsService, user_service_1.UserService],
+        exports: [user_service_1.UserService],
     })
 ], GlobalModule);
 exports.GlobalModule = GlobalModule;

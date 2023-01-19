@@ -21,10 +21,10 @@ let RegionsController = class RegionsController {
         this.regionService = regionService;
     }
     async findAll() {
-        return this.regionService.findAll();
+        return await this.regionService.findAll();
     }
     async findRegionsbyID(id) {
-        return this.regionService.findRegionsbyID(id);
+        return await this.regionService.findRegionsbyID(id);
     }
     async createNewRegion(body) {
         return await this.regionService.createNewRegion(body);
