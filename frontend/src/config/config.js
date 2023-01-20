@@ -3,6 +3,7 @@ const config = {
     endpoint: {
         auth: '/auth',
         calculator: '/calculator',
+        signin: '/user'
     }
 }
 

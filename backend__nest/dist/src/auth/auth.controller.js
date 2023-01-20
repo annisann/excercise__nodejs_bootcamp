@@ -21,14 +21,14 @@ let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    async login(request) {
-        return this.authService.login(request.user);
+    async login(body) {
+        return this.authService.validateUser(body.username, body.password);
     }
 };
 __decorate([
     (0, decorators_1.UseGuards)((0, passport_1.AuthGuard)('local')),
     (0, decorators_1.Post)('login'),
-    __param(0, (0, decorators_1.Request)()),
+    __param(0, (0, decorators_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)

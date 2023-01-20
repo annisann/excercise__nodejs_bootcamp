@@ -22,26 +22,23 @@ let AuthService = class AuthService {
     async validateUser(username, password) {
         const user = await this.userService.findBy(username);
         if (user) {
-            const passwordMatch = bcrypt.compareSync(password, user.password);
+            const passwordMatch = bcrypt.compareSync(password, user.passhash);
             if (passwordMatch) {
-                return user;
+                return {
+                    message: 'Login succeed!',
+                    access_token: this.jwtService.sign({
+                        username: username,
+                        password: password,
+                    }),
+                };
             }
             else {
                 return `Wrong password`;
             }
         }
         else {
-            return null;
+            return `User not found!`;
         }
-    }
-    async login(user) {
-        const payload = {
-            username: user.username,
-        };
-        return {
-            message: 'Login succeed!',
-            access_token: this.jwtService.sign(payload),
-        };
     }
 };
 AuthService = __decorate([

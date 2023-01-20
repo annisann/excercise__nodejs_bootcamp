@@ -10,30 +10,42 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(username, password) {
+  async validateUser(username: string, password: string) {
     const user = await this.userService.findBy(username);
+
     if (user) {
-      const passwordMatch = bcrypt.compareSync(password, user.password);
+      const passwordMatch = bcrypt.compareSync(password, user.passhash);
+
       if (passwordMatch) {
-        return user;
+        // return user;
+        return {
+          message: 'Login succeed!',
+
+          // Token for headers
+          access_token: this.jwtService.sign({
+            username: username,
+            password: password,
+          }),
+        };
       } else {
         return `Wrong password`;
       }
     } else {
-      return null;
+      return `User not found!`;
     }
   }
 
-  async login(user: any) {
-    const payload = {
-      username: user.username,
-    };
+  // async login(user: any) {
+  //   const payload = {
+  //     username: user.username,
+  //     // password: user.password,
+  //   };
 
-    return {
-      message: 'Login succeed!',
+  //   return {
+  //     message: 'Login succeed!',
 
-      // Token for headers
-      access_token: this.jwtService.sign(payload),
-    };
+  //     // Token for headers
+  //     access_token: this.jwtService.sign(payload),
+  //   };
   }
 }
