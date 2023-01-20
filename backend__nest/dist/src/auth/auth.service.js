@@ -28,7 +28,6 @@ let AuthService = class AuthService {
                     message: 'Login succeed!',
                     access_token: this.jwtService.sign({
                         username: username,
-                        password: password,
                     }),
                 };
             }

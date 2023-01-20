@@ -18,6 +18,8 @@ export default function Login() {
 
         if (typeof result === 'object') {
             // setMessage(result.message)
+            localStorage.setItem('token', result.access_token)
+            
             navigate(
                 config.endpoint.signin,
                 {
@@ -25,7 +27,7 @@ export default function Login() {
                         username
                     }
                 })
-                
+
         } else {
             setMessage(result)
         }

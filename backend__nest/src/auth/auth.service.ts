@@ -24,7 +24,6 @@ export class AuthService {
           // Token for headers
           access_token: this.jwtService.sign({
             username: username,
-            password: password,
           }),
         };
       } else {
