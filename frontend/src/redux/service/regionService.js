@@ -1,25 +1,27 @@
 // Ngakses api
 
-import axiosInit from '../../config/config'
+import axios from "../../config/http-common"
+// import axios from "axios"
+import config from "../../config/config"
 
 const getAll = () => {
-    return axiosInit.get('/regions')
+    return axios.get(config.baseUrl + '/regions')
 }
 
 const getOne = id => {
-    return axiosInit.get(`/regions/${id}`)
+    return axios.get(config.baseUrl + `regions/${id}`)
 }
 
 const create = data => {
-    return axiosInit.post('regions/add', data)
+    return axios.post(config.baseUrl + 'regions/add', data)
 }
 
-const update = (id, data) => {
-    return axiosInit.put(`regions/update/${id}`, data)
+const update = data => {
+    return axios.put(config.baseUrl + `regions/update`, data)
 }
 
 const remove = id => {
-    return axiosInit.delete(`regions/${id}`)
+    return axios.delete(config.baseUrl + `regions/${id}`)
 }
 
 const regionService = {

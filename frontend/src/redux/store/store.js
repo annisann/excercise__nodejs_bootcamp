@@ -1,6 +1,7 @@
-import { combineReducers } from "redux"
+import { applyMiddleware, combineReducers, createStore } from "redux"
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
 import regionReducers from "../reducer/regionReducer"
-import { configureStore } from "@reduxjs/toolkit"
+import { composeWithDevTools } from "redux-devtools-extension"
 
 const reducer = combineReducers({
     regionReducer: regionReducers
@@ -8,11 +9,10 @@ const reducer = combineReducers({
 
 const store = configureStore({
     reducer,
-    middleware: (getDefaultMiddleware) => {
-        getDefaultMiddleware({
-            serializableCheck: false
-        })
-    }
+    middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware({
+        serializableCheck: false
+    })
 })
 
 export default store

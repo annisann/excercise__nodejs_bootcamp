@@ -8,7 +8,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   // Karna pake password, tiap ngakses link auth/login akan masuk ke file local.strategy buat check authorization
-  @UseGuards(AuthGuard('local'))
+  // @UseGuards(AuthGuard('local'))
   @Post('login')
   async login(@Body() body: any) {
     // return this.authService.login(body.username);

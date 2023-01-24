@@ -12,7 +12,6 @@ function regionReducers(state = initialState, action) {
         case ActionTypes.GET_REGIONS:
             return {...state, regions: action.payload}
         case ActionTypes.UPDATE_REGION:
-            // return {...state}
             return applyUpdateUser(state, action)
         case ActionTypes.ADD_REGION:
             return {...state}

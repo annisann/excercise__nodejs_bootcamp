@@ -28,10 +28,7 @@ export const getRegions = () => async(dispatch) => {
             type: ActionTypes.GET_REGIONS,
             payload: res.data
         })
-
-        // return Promise.resolve(res.data)
     } catch (error) {
-        // return Promise.reject(error)
         console.log(error)
     }
 }
@@ -49,9 +46,9 @@ export const getRegion = (id) => async(dispatch) => {
     }
 }
 
-export const updateRegion = (id, data) => async(dispatch) => {
+export const updateRegion = (data) => async(dispatch) => {
     try {
-        const res = await regionService.update(id, data)
+        const res = await regionService.update(data)
 
         dispatch({
             type: ActionTypes.UPDATE_REGION,
