@@ -9,19 +9,19 @@ const getAll = () => {
 }
 
 const getOne = id => {
-    return axios.get(config.baseUrl + `regions/${id}`)
+    return axios.get(config.baseUrl + `/regions/${id}`)
 }
 
 const create = data => {
-    return axios.post(config.baseUrl + 'regions/add', data)
+    return axios.post(config.baseUrl + '/regions/add', data)
 }
 
 const update = data => {
-    return axios.put(config.baseUrl + `regions/update`, data)
+    return axios.put(config.baseUrl + `/regions/update`, data)
 }
 
 const remove = id => {
-    return axios.delete(config.baseUrl + `regions/${id}`)
+    return axios.delete(config.baseUrl + `/regions/${id}`)
 }
 
 const regionService = {
