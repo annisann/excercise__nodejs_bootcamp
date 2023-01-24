@@ -21,10 +21,17 @@ export class RegionsService {
   }
 
   async createNewRegion(newRegion: Regions): Promise<any> {
-    return await this.regionRepository.insert({
-      regionId: newRegion.regionId,
-      regionName: newRegion.regionName,
-    });
+    return await this.regionRepository
+      .insert({
+        // regionId: newRegion.regionId,
+        regionName: newRegion.regionName,
+      })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        return err;
+      });
   }
 
   async updateRegion(regionToUpdate: Regions): Promise<any> {

@@ -30,9 +30,15 @@ let RegionsService = class RegionsService {
         });
     }
     async createNewRegion(newRegion) {
-        return await this.regionRepository.insert({
-            regionId: newRegion.regionId,
+        return await this.regionRepository
+            .insert({
             regionName: newRegion.regionName,
+        })
+            .then((result) => {
+            return result;
+        })
+            .catch((err) => {
+            return err;
         });
     }
     async updateRegion(regionToUpdate) {

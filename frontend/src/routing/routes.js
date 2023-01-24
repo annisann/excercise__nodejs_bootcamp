@@ -4,7 +4,8 @@ import ParentEmployeeData from "../components/employeeData/parentEmployeeData"
 import Home from "../components/home"
 import Login from "../components/login"
 import User from "../components/user"
-import RegionRedux from "../pages/regionRedux"
+import RegionRedux from "../pages/regionsRedux"
+import AddRegionRedux from "../pages/addRegionRedux"
 
 // Bikin di sidebar
 const RoutesPath = () => {
@@ -21,6 +22,7 @@ const RoutesPath = () => {
                 <Route path='user' element={<PrivateRoute><User/></PrivateRoute>}></Route>
 
                 <Route path='regions' element = {<RegionRedux/>}></Route>
+                <Route path='regions/add' element = {<AddRegionRedux/>}></Route>
             </Routes>
         </BrowserRouter>
     )

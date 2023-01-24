@@ -7,7 +7,7 @@ import regionService from "../service/regionService"
 
 export const createRegion = (region) => async (dispatch) => {
     try {
-        const res = await regionService.create({region})
+        const res = await regionService.create(region)
 
         dispatch({
             type: ActionTypes.ADD_REGION,

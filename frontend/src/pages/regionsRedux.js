@@ -7,17 +7,18 @@ const RegionRedux = () => {
     let navigate = useNavigate()
 
     let regions = useSelector(state => state.regionReducer.regions)
-    console.log('regions ', regions)
+    
     const dispatch = useDispatch()
 
     // useEffect(() => {
     //     dispatch(getRegions())
     // }, [dispatch])
 
+
     useEffect(() => {
         dispatch(getRegions())
     })
-    
+
     const editData = id => {
         navigate('/update')
     }
@@ -27,9 +28,8 @@ const RegionRedux = () => {
     }
 
     return (
-        <main id="main" className="main">
             <div className="pageTitle">
-                <a href="/addregion" class="btn btn-primary"> tambah </a>
+                <a href="/regions/add" class="btn btn-primary"> tambah </a>
                 <table className="table">
                     <thead>
                         <tr>
@@ -42,7 +42,7 @@ const RegionRedux = () => {
                         {
                             regions && regions.map((region, i) => {
                                 return (
-                                    <tr>
+                                    <tr key={region.regionId}>
                                         <td> {i+1} </td>
                                         <td> {region.regionId} </td>
                                         <td> {region.regionName} </td>
@@ -55,7 +55,6 @@ const RegionRedux = () => {
                     </tbody>
                 </table>
             </div>
-        </main>
     )
 }
 
