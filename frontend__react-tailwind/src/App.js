@@ -1,24 +1,14 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+// import logo from '../public/hi.gif'
+// import logo from './hi.gif'
 import './App.css';
+import FlexboxLayout from './pages/flexbox-layout';
+import GridLayout from './pages/grid-layout';
+import Home from './components/home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Home />
   );
 }
 
