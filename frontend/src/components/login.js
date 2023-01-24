@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import config from '../config/config'
 
 export default function Login() {
-    const navigate = useNavigate()
+    let navigate = useNavigate()
     
     // States
     const [username, setUsername] = useState('')
