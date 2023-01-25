@@ -13,11 +13,10 @@ const RegionRedux = () => {
 
     useEffect(() => {
         dispatch(getRegions())
-    }, [dispatch])
+    })// [dispatch])
 
-    const editData = id => {
-        console.log('redux edit', id)
-        navigate('/regions/update', {state: {id}})
+    const editData = (id, name) => {
+        navigate('/regions/update', {state: {id, name}})
     }
 
     const deleteData = id => {
@@ -45,7 +44,7 @@ const RegionRedux = () => {
                                         <td> {region.regionId} </td>
                                         <td> {region.regionName} </td>
                                         <td>
-                                            <button class = "btn btn-warning" onClick={() => editData(region.regionId)}> Edit </button> <span/>
+                                            <button class = "btn btn-warning" onClick={() => editData(region.regionId, region.regionName)}> Edit </button> <span/>
                                             <button class = "btn btn-danger" onClick={() => deleteData(region.regionId)}> Delete </button>
                                         </td>
                                     </tr>

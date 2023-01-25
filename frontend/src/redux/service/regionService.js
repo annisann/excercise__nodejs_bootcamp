@@ -1,7 +1,6 @@
 // Ngakses api
 
 import axios from "../../config/http-common"
-// import axios from "axios"
 import config from "../../config/config"
 
 const getAll = () => {
@@ -17,7 +16,6 @@ const create = data => {
 }
 
 const update = (id, data) => {
-    console.log('update service', config.endpoint.regions.update + `/${id}`, data)
     return axios.put(config.baseUrl + config.endpoint.regions.update + `/${id}`, data)
 }
 

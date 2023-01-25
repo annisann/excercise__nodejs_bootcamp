@@ -48,9 +48,7 @@ export const getRegion = (id) => async(dispatch) => {
 
 export const updateRegion = (id, data) => async(dispatch) => {
     try {
-        console.log('iddata', id, data)
         const res = await regionService.update(id, data)
-        console.log('updateRegion', res)
 
         dispatch({
             type: ActionTypes.UPDATE_REGION,

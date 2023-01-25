@@ -39,15 +39,15 @@ const UpdateRegionRedux = () => {
 
     const editData = e => {
         e.preventDefault()
-        console.log('Submit edit data button', regionData)
 
-        dispatch(updateRegion(regionData.regionId, regionData))
+        dispatch(updateRegion(regionData.regionId, {regionId: regionData.regionId, regionName: regionData.regionName}))
             .then(() => {
                 navigate('/regions')
             })
             .catch(e => {
                 console.log(e)
             })
+        console.log('Submit edit data button', regionData)
     }
 
     return (
