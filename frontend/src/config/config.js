@@ -4,6 +4,10 @@ const config = {
         auth: '/auth',
         calculator: '/calculator',
         signin: '/user',
+        regions: {
+            all: '/regions',
+            update: '/regions/update'
+        }
     }
 };
 

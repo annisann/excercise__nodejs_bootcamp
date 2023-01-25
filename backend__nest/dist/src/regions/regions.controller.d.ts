@@ -6,6 +6,6 @@ export declare class RegionsController {
     findAll(): Promise<any>;
     findRegionsbyID(id: number): Promise<any>;
     createNewRegion(body: Regions): Promise<any>;
-    updateRegion(body: Regions): Promise<any>;
+    updateRegion(id: number, body: Regions): Promise<any>;
     deleteRegion(id: number): Promise<any>;
 }

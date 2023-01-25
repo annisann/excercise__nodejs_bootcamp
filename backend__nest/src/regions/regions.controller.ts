@@ -36,10 +36,14 @@ export class RegionsController {
     return await this.regionService.createNewRegion(body);
   }
 
-  @Put('update')
-  async updateRegion(@Body() body: Regions) {
-    return await this.regionService.updateRegion(body);
+  @Put('update/:id')
+  async updateRegion(@Param('id') id: number, @Body() body: Regions) {
+    return await this.regionService.updateRegion(id, body);
   }
+  // @Put('update')
+  // async updateRegion(@Body() body: Regions) {
+  //   return await this.regionService.updateRegion(body);
+  // }
 
   @Delete(':id')
   async deleteRegion(@Param('id') id: number) {

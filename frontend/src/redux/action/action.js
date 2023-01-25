@@ -5,9 +5,9 @@ import regionService from "../service/regionService"
 
 // Ngambil data & update ke store, pake reducer (params: action & ..)
 
-export const createRegion = (region) => async (dispatch) => {
+export const createRegion = (data) => async (dispatch) => {
     try {
-        const res = await regionService.create(region)
+        const res = await regionService.create(data)
 
         dispatch({
             type: ActionTypes.ADD_REGION,
@@ -46,15 +46,17 @@ export const getRegion = (id) => async(dispatch) => {
     }
 }
 
-export const updateRegion = (data) => async(dispatch) => {
+export const updateRegion = (id, data) => async(dispatch) => {
     try {
-        const res = await regionService.update(data)
+        console.log('iddata', id, data)
+        const res = await regionService.update(id, data)
+        console.log('updateRegion', res)
 
         dispatch({
             type: ActionTypes.UPDATE_REGION,
-            payload: data
+            payload: {data}
         })
-
+        
         return Promise.resolve(res.data)
     } catch (error) {
         return Promise.reject(error)

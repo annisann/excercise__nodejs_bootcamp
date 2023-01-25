@@ -34,11 +34,15 @@ export class RegionsService {
       });
   }
 
-  async updateRegion(regionToUpdate: Regions): Promise<any> {
-    return await this.regionRepository.update(
-      regionToUpdate.regionId,
-      regionToUpdate,
-    );
+  async updateRegion(id: number, regionToUpdate: Regions): Promise<any> {
+    return await this.regionRepository
+      .update({ regionId: id }, regionToUpdate)
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        return err;
+      });
   }
 
   async deleteRegion(idToDelete: number): Promise<any> {

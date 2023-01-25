@@ -41,8 +41,15 @@ let RegionsService = class RegionsService {
             return err;
         });
     }
-    async updateRegion(regionToUpdate) {
-        return await this.regionRepository.update(regionToUpdate.regionId, regionToUpdate);
+    async updateRegion(id, regionToUpdate) {
+        return await this.regionRepository
+            .update({ regionId: id }, regionToUpdate)
+            .then((result) => {
+            return result;
+        })
+            .catch((err) => {
+            return err;
+        });
     }
     async deleteRegion(idToDelete) {
         return await this.regionRepository.delete({ regionId: idToDelete });

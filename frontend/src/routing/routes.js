@@ -6,6 +6,8 @@ import Login from "../components/login"
 import User from "../components/user"
 import RegionRedux from "../pages/regionsRedux"
 import AddRegionRedux from "../pages/addRegionRedux"
+import UpdateRegionRedux from "../pages/updateRegionRedux"
+import config from "../config/config"
 
 // Bikin di sidebar
 const RoutesPath = () => {
@@ -23,6 +25,7 @@ const RoutesPath = () => {
 
                 <Route path='regions' element = {<RegionRedux/>}></Route>
                 <Route path='regions/add' element = {<AddRegionRedux/>}></Route>
+                <Route path={config.endpoint.regions.update} element = {<UpdateRegionRedux/>}></Route>
             </Routes>
         </BrowserRouter>
     )

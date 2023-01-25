@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { deleteRegion, getRegions } from "../redux/action/action"
+import AddRegionRedux from "./addRegionRedux"
 
 const RegionRedux = () => {
     let navigate = useNavigate()
@@ -10,17 +11,13 @@ const RegionRedux = () => {
     
     const dispatch = useDispatch()
 
-    // useEffect(() => {
-    //     dispatch(getRegions())
-    // }, [dispatch])
-
-
     useEffect(() => {
         dispatch(getRegions())
-    })
+    }, [dispatch])
 
     const editData = id => {
-        navigate('/update')
+        console.log('redux edit', id)
+        navigate('/regions/update', {state: {id}})
     }
 
     const deleteData = id => {
@@ -29,7 +26,8 @@ const RegionRedux = () => {
 
     return (
             <div className="pageTitle">
-                <a href="/regions/add" class="btn btn-primary"> tambah </a>
+                {/* <a href="/regions/add" class="btn btn-primary"> tambah </a> */}
+                <AddRegionRedux />
                 <table className="table">
                     <thead>
                         <tr>
@@ -46,8 +44,10 @@ const RegionRedux = () => {
                                         <td> {i+1} </td>
                                         <td> {region.regionId} </td>
                                         <td> {region.regionName} </td>
-                                        <td> <button class = "btn btn-warning"> Edit </button> </td>
-                                        <td> <button class = "btn btn-danger"> Delete </button> </td>
+                                        <td>
+                                            <button class = "btn btn-warning" onClick={() => editData(region.regionId)}> Edit </button> <span/>
+                                            <button class = "btn btn-danger" onClick={() => deleteData(region.regionId)}> Delete </button>
+                                        </td>
                                     </tr>
                                 )
                             })

@@ -16,8 +16,9 @@ const create = data => {
     return axios.post(config.baseUrl + '/regions/add', data)
 }
 
-const update = data => {
-    return axios.put(config.baseUrl + `/regions/update`, data)
+const update = (id, data) => {
+    console.log('update service', config.endpoint.regions.update + `/${id}`, data)
+    return axios.put(config.baseUrl + config.endpoint.regions.update + `/${id}`, data)
 }
 
 const remove = id => {

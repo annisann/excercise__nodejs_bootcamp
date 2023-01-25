@@ -29,8 +29,8 @@ let RegionsController = class RegionsController {
     async createNewRegion(body) {
         return await this.regionService.createNewRegion(body);
     }
-    async updateRegion(body) {
-        return await this.regionService.updateRegion(body);
+    async updateRegion(id, body) {
+        return await this.regionService.updateRegion(id, body);
     }
     async deleteRegion(id) {
         return await this.regionService.deleteRegion(id);
@@ -57,10 +57,11 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RegionsController.prototype, "createNewRegion", null);
 __decorate([
-    (0, common_1.Put)('update'),
-    __param(0, (0, common_1.Body)()),
+    (0, common_1.Put)('update/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Regions_1.Regions]),
+    __metadata("design:paramtypes", [Number, Regions_1.Regions]),
     __metadata("design:returntype", Promise)
 ], RegionsController.prototype, "updateRegion", null);
 __decorate([
