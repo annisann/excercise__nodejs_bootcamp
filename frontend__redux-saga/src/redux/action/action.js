@@ -1,77 +1,73 @@
-// Return type & payload
-
 import ActionTypes from "../constant/actiontype"
-import regionService from "../service/regionService"
 
-// Ngambil data & update ke store, pake reducer (params: action & ..)
-
-export const createRegion = (data) => async (dispatch) => {
-    try {
-        const res = await regionService.create(data)
-
-        dispatch({
-            type: ActionTypes.ADD_REGION,
-            payload: res.data // tampungan dari API, lalu dikirim ke store
-        })
-
-        return Promise.resolve(res.data)
-    } catch (error) {
-        return Promise.reject(error)
+export const doRequestRegions = () => {
+    return {
+        type: ActionTypes.GET_REGIONS
     }
 }
 
-export const getRegions = () => async(dispatch) => {
-    try {
-        const res = await regionService.getAll()
-
-        dispatch({
-            type: ActionTypes.GET_REGIONS,
-            payload: res.data
-        })
-    } catch (error) {
-        console.log(error)
+export const doRequestRegionSucceed = payload => {
+    return {
+        type: ActionTypes.GET_REGIONS_SUCCEED
     }
 }
 
-export const getRegion = (id) => async(dispatch) => {
-    try {
-        const res = await regionService.getOne(id)
-
-        dispatch({
-            type: ActionTypes.GET_REGION,
-            payload: res.data
-        })
-    } catch (error) {
-        console.log(error)
+export const doRequestRegionFailed = payload => {
+    return {
+        type: ActionTypes.GET_REGIONS_FAILED
     }
 }
 
-export const updateRegion = (id, data) => async(dispatch) => {
-    try {
-        const res = await regionService.update(id, data)
-
-        dispatch({
-            type: ActionTypes.UPDATE_REGION,
-            payload: {data}
-        })
-        
-        return Promise.resolve(res.data)
-    } catch (error) {
-        return Promise.reject(error)
+export const doCreateRegion = payload => {
+    return {
+        type: ActionTypes.ADD_REGION
     }
 }
 
-export const deleteRegion = (id) => async(dispatch) => {
-    try {
-        const res = await regionService.remove(id)
+export const doCreateRegionSucceed = payload => {
+    return {
+        type: ActionTypes.ADD_REGION_SUCCEED
+    }
+}
 
-        dispatch({
-            type: ActionTypes.DELETE_REGION,
-            payload: {id}
-        })
+export const doCreateRegionFailed = payload => {
+    return {
+        type: ActionTypes.ADD_REGION_FAILED
+    }
+}
 
-        return Promise.resolve(res.data)
-    } catch (error) {
-        return Promise.reject(error)
+export const doUpdateRegion = payload => {
+    return {
+        type: ActionTypes.UPDATE_REGION
+    }
+}
+
+export const doUpdateRegionSucceed = payload => {
+    return {
+        type: ActionTypes.UPDATE_REGION_SUCCEED
+    }
+}
+
+export const doUpdateRegionFailed = payload => {
+    return {
+        type: ActionTypes.UPDATE_REGION_FAILED
+    }
+}
+
+export const doDeleteRegion = payload => {
+    return {
+        type: ActionTypes.DELETE_REGION
+    }
+}
+
+export const doDeleteRegionSucceed = payload => {
+    return {
+        type: ActionTypes.DELETE_REGION_SUCCEED
+    }
+}
+
+export const doDeleteRegionFailed = payload => {
+    return {
+        type: ActionTypes.DELETE_REGION_FAILED
     }
 }
