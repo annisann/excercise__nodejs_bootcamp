@@ -10,9 +10,9 @@ const getAll = async () => {
 	}
 };
 
-// const getOne = (id) => {
-// 	return axios.get(config.baseUrl + `/regions/${id}`);
-// };
+const getOne = (id) => {
+	return axios.get(`${config.endpoint.region.all}/${id}`);
+};
 
 const create = async (data) => {
 	try {
@@ -22,9 +22,9 @@ const create = async (data) => {
 	}
 };
 
-const update = async (id, data) => {
+const update = async (data) => {
 	try {
-		return await axios.put(`${config.endpoint.region.update}/${id}`, data);
+		return await axios.put(`${config.endpoint.region.update}/${data.regionId}`, data);
 	} catch (error) {
 		return error.message;
 	}
@@ -40,7 +40,7 @@ const remove = async (id) => {
 
 const regionService = {
 	getAll,
-	// getOne,
+	getOne,
 	create,
 	update,
 	remove,

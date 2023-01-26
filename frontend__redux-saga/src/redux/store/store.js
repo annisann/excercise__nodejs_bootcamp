@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "@redux-saga/core";
 import regionReducers from "../reducer/regionReducer";
 import rootSaga from "../sagas";

@@ -18,17 +18,15 @@ const UpdateRegionRedux = () => {
     })
 
     useEffect(() => {
-        regionService.getOne(id)
-        .then(res => {
+        regionService.getOne(id).then(res => {
             setRegionData({
                 ...regionData,
                 regionId: res.data.regionId,
-                regionName: res.data.regionName
+                // regionName: res.data.regionName
             })
-        })
-        .catch(error => alert(error))
+        }).catch(error => alert(error))
     })
-
+    
     const eventHandler = name => event => {        
         setRegionData({
             ...regionData,
@@ -38,15 +36,10 @@ const UpdateRegionRedux = () => {
     }
 
     const editData = e => {
-        e.preventDefault()
-
-        dispatch(doUpdateRegion(regionData.regionId, regionData))
-            .then(() => {
-                navigate('/regions')
-            })
-            .catch(e => {
-                console.log(e)
-            })
+        e.preventDefault();
+        dispatch(doUpdateRegion(regionData))
+        console.log(regionData)
+        navigate('/regions')
     }
 
     return (

@@ -11,7 +11,7 @@ config.endpoint.region = {
     all: config.baseUrl + '/regions',
     update: config.baseUrl + '/regions/update',
     create: config.baseUrl + '/regions/add',
-    delete: config.baseUrl + '/regions/'
+    delete: config.baseUrl + '/regions'
 }
 
 export default config

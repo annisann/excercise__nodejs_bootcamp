@@ -36,27 +36,25 @@ function regionReducers(state = initialState, action) {
 			return {
 				...state,
 				regions: state.regions.filter(
-					(region) => region.id !== action.payload.id
+					(region) => region.regionId !== action.payload
 				),
 			};
 		case ActionTypes.DELETE_REGION_FAILED:
 			return {
 				...state,
 				regions: state.regions.filter(
-					(region) => region.id !== action.payload.id
+					(region) => region.regionId !== action.payload
 				),
 			};
 
 		default:
 			return { ...state, regions: action.payload };
-			// return state
-			// return console.error();
 	}
 }
 
 const applyUpdateUser = (state, action) => {
 	return state.regions.map((region) => {
-		if (region.id === action.payload.id) {
+		if (region.regionId === action.payload) {
 			return {
 				...state,
 				...action.payload,

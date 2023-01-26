@@ -22,8 +22,8 @@ const RoutesPath = () => {
                 <Route path='user' element={<PrivateRoute><User/></PrivateRoute>}></Route>
 
                 <Route path='/regions'  element = {<RegionRedux/>}></Route>
-                <Route path={config.endpoint.region.create} element = {<AddRegionRedux/>}></Route>
-                <Route path={config.endpoint.region.update} element = {<UpdateRegionRedux/>}></Route>
+                {/* <Route path='/regions/add' element = {<AddRegionRedux/>}></Route> */}
+                <Route path='/regions/update' element = {<UpdateRegionRedux/>}></Route>
             </Routes>
         </BrowserRouter>
     )

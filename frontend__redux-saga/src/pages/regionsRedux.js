@@ -13,7 +13,7 @@ const RegionRedux = () => {
 
     useEffect(() => {
         dispatch(doRequestRegions())
-    }, [])
+    })
 
     const editData = (id, name) => {
         navigate('/regions/update', {state: {id, name}})
@@ -22,7 +22,7 @@ const RegionRedux = () => {
     const deleteData = id => {
         dispatch(doDeleteRegion(id))
     }
-
+    
     return (
             <div className="pageTitle">
                 {/* <a href="/regions/add" class="btn btn-primary"> tambah </a> */}
@@ -44,8 +44,8 @@ const RegionRedux = () => {
                                         <td> {region.regionId} </td>
                                         <td> {region.regionName} </td>
                                         <td>
-                                            <button class = "btn btn-warning" onClick={() => editData(region.regionId, region.regionName)}> Edit </button> <span/>
-                                            <button class = "btn btn-danger" onClick={() => deleteData(region.regionId)}> Delete </button>
+                                            <button className = "btn btn-warning" onClick={() => editData(region.regionId, region.regionName)}> Edit </button> <span/>
+                                            <button className = "btn btn-danger" onClick={() => deleteData(region.regionId)}> Delete </button>
                                         </td>
                                     </tr>
                                 )

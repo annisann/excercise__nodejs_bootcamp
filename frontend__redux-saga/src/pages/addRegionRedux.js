@@ -23,19 +23,14 @@ const AddRegionRedux = () => {
         e.preventDefault()
         
         dispatch(doCreateRegion(regionData))
-        .then(()=> {
-            navigate('/regions')
-        })
-        .catch(e => {
-            alert(e)
-        })
+        navigate('/regions')
     }
 
     return (
         <div className="container">
             <form>
                 <div className="mb-3">
-                    <label for="region name" className="form-label"> Region Name </label>
+                    <label htmlFor="region name" className="form-label"> Region Name </label>
                     <input 
                         value={regionData.id}
                         onChange={eventHandler('regionName')}
