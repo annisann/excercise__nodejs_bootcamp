@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { updateRegion } from "../redux/action/action"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
-import regionService from "../redux/service/regionService"
+import { doUpdateRegion } from "../redux/action/action"
+import regionService from "../redux/service/apiRegion"
 
 const UpdateRegionRedux = () => {
     const {state} = useLocation()
@@ -40,14 +40,13 @@ const UpdateRegionRedux = () => {
     const editData = e => {
         e.preventDefault()
 
-        dispatch(updateRegion(regionData.regionId, regionData))
+        dispatch(doUpdateRegion(regionData.regionId, regionData))
             .then(() => {
                 navigate('/regions')
             })
             .catch(e => {
                 console.log(e)
             })
-        console.log('Submit edit data button', regionData)
     }
 
     return (

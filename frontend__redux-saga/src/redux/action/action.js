@@ -6,15 +6,17 @@ export const doRequestRegions = () => {
     }
 }
 
-export const doRequestRegionSucceed = payload => {
+export const doRequestRegionsSucceed = (payload) => {
     return {
-        type: ActionTypes.GET_REGIONS_SUCCEED
+        type: ActionTypes.GET_REGIONS_SUCCEED,
+        payload
     }
 }
 
-export const doRequestRegionFailed = payload => {
+export const doRequestRegionsFailed = (payload) => {
     return {
-        type: ActionTypes.GET_REGIONS_FAILED
+        type: ActionTypes.GET_REGIONS_FAILED,
+        payload
     }
 }
 
