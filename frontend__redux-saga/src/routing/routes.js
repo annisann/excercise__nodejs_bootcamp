@@ -1,6 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
-import Calculator from "../components/calculatorWithProps/calculatorInterface"
-import ParentEmployeeData from "../components/employeeData/parentEmployeeData"
+import Calculator from '../components/calculator/calculatorInterface'
 import Home from "../components/home"
 import Login from "../components/login"
 import User from "../components/user"
@@ -20,12 +19,11 @@ const RoutesPath = () => {
                 <Route path='login' element={<Login/>}></Route>
                 {/* Page: Login Needed. */}
                 <Route path='calculator' element={<PrivateRoute><Calculator/></PrivateRoute>}></Route>
-                <Route path='employee' element={<PrivateRoute><ParentEmployeeData/></PrivateRoute>}></Route>
                 <Route path='user' element={<PrivateRoute><User/></PrivateRoute>}></Route>
 
-                <Route path='regions' element = {<RegionRedux/>}></Route>
-                <Route path='regions/add' element = {<AddRegionRedux/>}></Route>
-                <Route path={config.endpoint.regions.update} element = {<UpdateRegionRedux/>}></Route>
+                <Route path='/regions'  element = {<RegionRedux/>}></Route>
+                <Route path={config.endpoint.region.create} element = {<AddRegionRedux/>}></Route>
+                <Route path={config.endpoint.region.update} element = {<UpdateRegionRedux/>}></Route>
             </Routes>
         </BrowserRouter>
     )

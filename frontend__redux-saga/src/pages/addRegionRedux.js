@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { createRegion } from "../redux/action/action"
+import { doCreateRegion } from "../redux/action/action"
 
 const AddRegionRedux = () => {
     let navigate = useNavigate()
@@ -22,7 +22,7 @@ const AddRegionRedux = () => {
     const addData = e => {
         e.preventDefault()
         
-        dispatch(createRegion(regionData))
+        dispatch(doCreateRegion(regionData))
         .then(()=> {
             navigate('/regions')
         })

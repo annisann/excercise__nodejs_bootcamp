@@ -1,26 +1,26 @@
-import { useEffect } from "react"
+import React,{ useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { deleteRegion, getRegions } from "../redux/action/action"
+import { doDeleteRegion, doRequestRegions } from "../redux/action/action"
 import AddRegionRedux from "./addRegionRedux"
 
 const RegionRedux = () => {
     let navigate = useNavigate()
 
-    let regions = useSelector(state => state.regionReducer.regions)
+    let regions = useSelector(state => state.regionsReducer.regions)
     
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getRegions())
-    })//, [dispatch])
+        dispatch(doRequestRegions())
+    }, [])
 
     const editData = (id, name) => {
         navigate('/regions/update', {state: {id, name}})
     }
 
     const deleteData = id => {
-        dispatch(deleteRegion(id))
+        dispatch(doDeleteRegion(id))
     }
 
     return (

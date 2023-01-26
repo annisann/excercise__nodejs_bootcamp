@@ -1,18 +1,26 @@
-import { applyMiddleware, combineReducers, createStore } from "redux"
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
-import regionReducers from "../reducer/regionReducer"
-import { composeWithDevTools } from "redux-devtools-extension"
+import { combineReducers } from "redux";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import createSagaMiddleware from "@redux-saga/core";
+import regionReducers from "../reducer/regionReducer";
+import rootSaga from "../sagas";
+// import {createLogger} from 'redux-logger'
+
+// const logger = createLogger()
+
 
 const reducer = combineReducers({
-    regionReducer: regionReducers
-})
+	regionsReducer: regionReducers,
+});
+const saga = createSagaMiddleware();
 
 const store = configureStore({
-    reducer,
-    middleware: (getDefaultMiddleware) => 
-    getDefaultMiddleware({
-        serializableCheck: false
-    })
-})
+	reducer,
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: false,
+		}).concat(saga)
+});
 
-export default store
+saga.run(rootSaga);
+
+export default store;
