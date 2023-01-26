@@ -38,7 +38,6 @@ const UpdateRegionRedux = () => {
     const editData = e => {
         e.preventDefault();
         dispatch(doUpdateRegion(regionData))
-        console.log(regionData)
         navigate('/regions')
     }
 

@@ -44,7 +44,6 @@ function* handleDeleteRegion(action) {
 		const result = yield call(ApiRegion.remove, action.payload);
 		yield put(doDeleteRegionSucceed(result.data));
 	} catch (error) {
-		console.log(error)
 		yield put(doDeleteRegionFailed(error));
 	}
 }
