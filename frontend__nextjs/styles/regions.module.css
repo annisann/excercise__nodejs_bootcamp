@@ -1,0 +1,44 @@
+.body-container {
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pagetitle {
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 1;
+    animation: bounce 1s infinite;
+}
+
+.text-container {
+    max-width: 32rem;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(-25%);
+        animationTimingFunction: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+        transform: translateY(0);
+        animationTimingFunction: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+@keyframes text-falling-animation {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+
+}
