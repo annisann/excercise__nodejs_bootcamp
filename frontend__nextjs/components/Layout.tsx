@@ -9,10 +9,10 @@ type LayoutProps = {
 const inter = Inter({subsets:['latin']})
 export default function Layout({ children }: LayoutProps) {
     return (
-        <html lang="en" className={`${inter.className}`}>
+        <main className={`${inter.className}`}>
             <Nav/>
             {children}
             <Footer/>
-        </html>
+        </main>
     )
 }
