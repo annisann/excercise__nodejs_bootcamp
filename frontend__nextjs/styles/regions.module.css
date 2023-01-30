@@ -40,5 +40,8 @@
     100% {
         transform: translateY(100%);
     }
+}
 
+.btn-addRegion {
+    font-style: italic;
 }

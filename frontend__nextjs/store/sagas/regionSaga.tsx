@@ -1,6 +1,18 @@
-
 import regionService from '@/api/apiRegion'
-import { DELETE_REGION, DELETE_REGION_FAILED, DELETE_REGION_SUCCEED, FETCH_REGIONS, FETCH_REGIONS_FAILED, FETCH_REGIONS_SUCCEED } from '@/data/actiontype'
+import {
+    ADD_REGION,
+    ADD_REGION_FAILED,
+    ADD_REGION_SUCCEED,
+    DELETE_REGION,
+    DELETE_REGION_FAILED,
+    DELETE_REGION_SUCCEED,
+    FETCH_REGIONS,
+    FETCH_REGIONS_FAILED,
+    FETCH_REGIONS_SUCCEED,
+    UPDATE_REGION,
+    UPDATE_REGION_FAILED,
+    UPDATE_REGION_SUCCEED
+} from '@/data/actiontype'
 import { all, call, put, takeEvery } from 'redux-saga/effects'
 
 function* fetchRegions(): any {
@@ -18,24 +30,7 @@ function* fetchRegions(): any {
     }
 }
 
-// function* addRegion(): any {
-//     try {
-
-//     } catch (error) {
-
-//     }
-// }
-
-// function* updateRegion(): any {
-//     try {
-
-//     } catch (error) {
-
-//     }
-// }
-
 function* deleteRegion(action: any): any {
-    console.log('deleteRegion at saga', action)
     try {
         const result = yield call(regionService.remove, action.data)
         yield put({
@@ -50,9 +45,43 @@ function* deleteRegion(action: any): any {
     }
 }
 
+function* addRegion(action: any): any {
+    try {
+        const result = yield call(regionService.create, action.data)
+        yield put({
+            type: ADD_REGION_SUCCEED,
+            data: result.data
+        })
+
+    } catch (err) {
+        yield put({
+            type: ADD_REGION_FAILED,
+            error: err
+        })
+    }
+}
+
+function* updateRegion(action: any): any {
+    try {
+        const result = yield call(regionService.update, action.data)
+        yield put({
+            type: UPDATE_REGION_SUCCEED,
+            data: result.data
+        })
+
+    } catch (err) {
+        yield put({
+            type: UPDATE_REGION_FAILED,
+            error: err
+        })
+    }
+}
+
 export default function* regionSaga() {
     yield all([
         takeEvery(FETCH_REGIONS, fetchRegions),
-        takeEvery(DELETE_REGION, deleteRegion)
+        takeEvery(DELETE_REGION, deleteRegion),
+        takeEvery(ADD_REGION, addRegion),
+        takeEvery(UPDATE_REGION, updateRegion)
     ])
 }
