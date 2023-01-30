@@ -16,15 +16,20 @@ const remove = async (data: Region): Promise<any> => {
 	return await axios.delete(`${REGIONS_URL}/${data.regionId}`);
 };
 
-const update = async(data: Region): Promise<any> => {
-	return await axios.put(`${REGIONS_URL}/update/${data.regionId}`)
-}
+const create = async (data: Region): Promise<any> => {
+	return await axios.post(`${REGIONS_URL}/add`, data);
+};
+
+const update = async (data: Region): Promise<any> => {
+	return await axios.put(`${REGIONS_URL}/update/${data.regionId}`, data);
+};
 
 const regionService = {
 	getAll,
 	getOne,
 	remove,
-	update
+	create,
+	update,
 };
 
 export default regionService;
