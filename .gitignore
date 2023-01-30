@@ -81,3 +81,5 @@ frontend/public/NiceAdmin/assets/img/bfly.jpeg
 frontend__react-tailwind/public/hi.gif
 frontend__react-tailwind/public/pink-octopus.png
 frontend__react-tailwind/public/wand.png
+backend__nest/.hintrc
+backend__nest/dist/tsconfig.build.tsbuildinfo
