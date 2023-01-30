@@ -29,7 +29,6 @@ export default function UpdateRegion() {
 
     const editData = (e: any) => {
         e.preventDefault();
-        console.log('ap aja')
         dispatch(updateRegion(regionData))
     }
 
