@@ -12,6 +12,7 @@
     font-size: 3rem;
     line-height: 1;
     animation: bounce 1s infinite;
+    /* animation: fan 0.2s infinite; */
 }
 
 .text-container {
@@ -32,16 +33,50 @@
     }
 }
 
-@keyframes text-falling-animation {
+@keyframes fan {
     0% {
-        transform: translateY(0);
+      transform: translateX(-100%) rotate(-360deg);
     }
-
     100% {
-        transform: translateY(100%);
+      transform: translateX(-100%) rotate(360deg);
     }
-}
+  }
+
 
 .btn-addRegion {
     font-style: italic;
 }
+
+/* REGION DATA TABLE */
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-overflow-container {
+    overflow-x: auto;
+}
+
+.table-overflow {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    min-width: 100%;
+}
+
+.data-table {
+    width: 20rem;
+    align-content: center;
+    min-width: 100%;
+    
+}
+
+.btn-container {
+    text-decoration: underline;
+    text-align: center;
+    color: #FCD34D;
+    font-weight: 500;   
+}
+
+/* ===================================== */
