@@ -71,28 +71,40 @@ export default function ShowRegion() {
                     onChange={inputRegionHandler('regionName')} />
                 <button className={styles['btn-addRegion']} onClick={handleClick}> {buttonText} </button>
             </div>
-            <table>  {/** Region table */}
-                <tbody>
-                    {
-                        regions.map((item: Region, i: number) => {
-                            return (
-                                <tr key={i}>
-                                    <td> {item.regionName} </td>
-                                    <td>
-                                        <button title="edit region's name">
-                                            <Link href={`region/${item.regionId}`}> edit </Link>
-                                        </button>
 
-                                    </td>
-                                    <td>
-                                        <button title="delete regions :O" onClick={() => remove(item)}> delete </button>
-                                    </td>
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
+            <div className={styles['table-container']}>
+                <div className={`${styles['table-overflow-container']} sm:-mx-6 lg:-mx-8`}>
+                    <div className={`${styles['table-overflow']} sm:px-6 lg:px-8`}>
+                        <div className="overflow-hidden">
+                            <table className={`${styles['data-table']} `}>  {/** Region table */}
+                                <tbody>
+                                    {
+                                        regions.map((item: Region, i: number) => {
+                                            return (
+                                                <tr key={i}>
+                                                    <td> {item.regionName} </td>
+                                                    <td className={styles['btn-container']}>
+                                                        <button
+                                                            title="edit region's name">
+                                                            <Link href={`region/${item.regionId}`}> edit </Link>
+                                                        </button>
+
+                                                    </td>
+                                                    <td className={styles['btn-container']}>
+                                                        <button
+                                                            title="delete regions :O"
+                                                            onClick={() => remove(item)}> delete </button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div >
     )
 }
