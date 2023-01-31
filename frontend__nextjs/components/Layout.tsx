@@ -6,13 +6,15 @@ import { Inter } from "@next/font/google";
 type LayoutProps = {
     children: React.ReactNode
 }
-const inter = Inter({subsets:['latin']})
+const inter = Inter({ subsets: ['latin'] })
 export default function Layout({ children }: LayoutProps) {
     return (
-        <main className={`${inter.className}`}>
-            <Nav/>
-            {children}
-            <Footer/>
-        </main>
+        <>
+            <Nav />
+            <section className={`${inter.className}`}>
+                {children}
+            </section>
+            <Footer />
+        </>
     )
 }

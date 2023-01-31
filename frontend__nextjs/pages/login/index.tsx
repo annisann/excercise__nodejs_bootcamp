@@ -9,7 +9,7 @@ export default function Login() {
                         <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Welcome Back!</h2>
                         <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600">Login to your account</p>
                     </div>
-
+                    
                     <div className="relative max-w-md mx-auto mt-8 md:mt-16">
                         <div className="overflow-hidden bg-white rounded-md shadow-md">
                             <div className="px-4 py-6 sm:px-8 sm:py-7">

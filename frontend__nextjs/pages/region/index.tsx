@@ -60,9 +60,10 @@ export default function ShowRegion() {
     }
 
     return (
-        <div className={styles['body-container']}>
+        // <div className="{styles['body-container']}">
+        <div className="text-center">
             <h3 className={styles.pagetitle}> regions data </h3>
-            <div className="container-addRegion">
+            <div className={styles['container-addRegion']}>
                 <input
                     title="input desired region here"
                     placeholder="region name"
